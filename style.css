@@ -1,0 +1,18 @@
+/* Personnalisation fine au-dessus de Bootstrap */
+:root {
+    --bs-danger: #e50914;
+    --bs-danger-rgb: 229, 9, 20;
+}
+
+/* Image des cartes de services */
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Focus sur les formulaires */
+.form-control:focus, .form-select:focus {
+    border-color: #e50914 !important;
+    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important;
+}
+
