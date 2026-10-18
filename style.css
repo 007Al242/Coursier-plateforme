@@ -1,18 +1,68 @@
-/* Personnalisation fine au-dessus de Bootstrap */
 :root {
-    --bs-danger: #e50914;
-    --bs-danger-rgb: 229, 9, 20;
+    --red-express: #e50914;
+    --red-hover: #b80710;
+    --bg-dark: #070707;
+    --card-bg: #121212;
+    --card-border: #222222;
+    --input-bg: #181818;
 }
 
-/* Image des cartes de services */
-.card-img-top {
-    height: 180px;
-    object-fit: cover;
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-/* Focus sur les formulaires */
+.text-red { color: var(--red-express) !important; }
+.bg-red { background-color: var(--red-express) !important; }
+
+.top-bar {
+    background-color: #000;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 0.85rem;
+}
+
+.btn-red {
+    background-color: var(--red-express);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+.btn-red:hover {
+    background-color: var(--red-hover);
+    color: #fff;
+}
+
+.navbar {
+    background-color: rgba(7, 7, 7, 0.95);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.card-custom {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+}
+
+.hero-section {
+    background: radial-gradient(circle at top right, rgba(229, 9, 20, 0.15), transparent 60%);
+}
+
+.tracking-preview {
+    background: linear-gradient(145deg, #181818, #0d0d0d);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+}
+
+.form-control, .form-select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--card-border);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+}
 .form-control:focus, .form-select:focus {
-    border-color: #e50914 !important;
-    box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important;
+    background-color: #202020;
+    border-color: var(--red-express);
+    color: #fff;
 }
-
