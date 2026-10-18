@@ -1,110 +1,86 @@
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-EXPRESS LOGISTIQUE - Livraison & Expédition</title>
-    <!-- Bootstrap 5 CSS CDN -->
+    <title>K-EXPRESS LOGISTIQUE - Transport & Livraison Express</title>
+    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Custom CSS -->
+    <!-- Custom CSS séparé -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .bg-custom-dark {
-            background-color: #121212;
-            border: 1px solid #222;
-        }
-        .text-red {
-            color: #e50914 !important;
-        }
-        .btn-red {
-            background-color: #e50914;
-            color: #ffffff;
-            font-weight: bold;
-        }
-        .btn-red:hover {
-            background-color: #b80710;
-            color: #ffffff;
-        }
-        .navbar {
-            background-color: #000000;
-            border-bottom: 1px solid #222;
-        }
-    </style>
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- Barre de Navigation -->
+    <!-- Top Bar Coordonnées -->
+    <div class="top-bar py-2 text-secondary">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <span class="me-3"><i class="fa-solid fa-envelope text-red me-1"></i> contact@k-express.com</span>
+                <span><i class="fa-solid fa-phone text-red me-1"></i> +242 06 000 0000</span>
+            </div>
+            <div class="d-none d-md-block">
+                <span><i class="fa-solid fa-clock text-red me-1"></i> 24h/24 - 7j/7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold text-uppercase" href="#"><span class="text-red">K-EXPRESS</span> LOGISTIQUE</a>
+            <a class="navbar-brand fw-bold fs-4" href="#"><span class="text-red">K-EXPRESS</span> LOGISTIQUE</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav align-items-center gap-2">
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#expedition">Expédition</a></li>
                     <li class="nav-item"><a class="nav-link" href="#fonctionnement">Comment ça marche</a></li>
                     <li class="nav-item"><a class="nav-link" href="#suivi">Suivi temps réel</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item ms-2"><a class="btn btn-outline-light btn-sm px-3" href="#suivi">Suivre ma commande</a></li>
-                    <li class="nav-item ms-2"><a class="btn btn-red btn-sm px-3" href="#commander">Commander</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-light btn-sm px-3" href="#suivi">Suivre ma commande</a></li>
+                    <li class="nav-item"><a class="btn btn-red btn-sm px-3" href="#commander">Commander</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="py-5 text-white">
-        <div class="container py-5">
-            <div class="row align-items-center">
+    <header class="py-5 hero-section">
+        <div class="container py-lg-4">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-7">
-                    <span class="badge bg-danger mb-3 px-3 py-2">EXPRESSION & LIVRAISON SÉCURISÉE</span>
-                    <h1 class="display-4 fw-bold mb-3">Votre colis, notre mission.<br>De la recherche à la livraison.</h1>
-                    <p class="text-muted lead mb-4">K-EXPRESS LOGISTIQUE est le partenaire innovant qui garantit rapidité, sécurité et fiabilité pour tous vos achats et expéditions de colis à domicile, avec un suivi en temps parfait de la commande.</p>
-                    <div class="d-flex gap-3">
+                    <span class="badge badge-express text-uppercase mb-3 px-3 py-2">Expédition & Livraison Sécurisée</span>
+                    <h1 class="display-4 fw-bold mb-3">Votre colis, notre mission.<br><span class="text-red">De la recherche à la livraison.</span></h1>
+                    <p class="text-secondary lead mb-4">K-EXPRESS LOGISTIQUE est le partenaire innovant qui vous garantit rapidité, sécurité et fiabilité pour tous vos achats et expéditions de colis à domicile, avec un suivi en temps réel.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-5">
                         <a href="#commander" class="btn btn-red btn-lg px-4">Passer une commande</a>
                         <a href="#suivi" class="btn btn-outline-light btn-lg px-4">Suivre un colis</a>
                     </div>
-                    <div class="row mt-5 text-center text-lg-start">
-                        <div class="col-3">
-                            <h3 class="fw-bold text-red">12 000+</h3>
-                            <p class="small text-muted">Colis livrés</p>
-                        </div>
-                        <div class="col-3">
-                            <h3 class="fw-bold text-red">98%</h3>
-                            <p class="small text-muted">Clients satisfaits</p>
-                        </div>
-                        <div class="col-3">
-                            <h3 class="fw-bold text-red">45 min</h3>
-                            <p class="small text-muted">Délai moyen en ville</p>
-                        </div>
-                        <div class="col-3">
-                            <h3 class="fw-bold text-red">24/7</h3>
-                            <p class="small text-muted">Service client</p>
-                        </div>
+                    <div class="row text-center text-lg-start g-3 border-top border-secondary pt-4">
+                        <div class="col-3"><h3 class="fw-bold text-red mb-0">12 000+</h3><small class="text-secondary">Colis livrés</small></div>
+                        <div class="col-3"><h3 class="fw-bold text-red mb-0">98%</h3><small class="text-secondary">Satisfaction</small></div>
+                        <div class="col-3"><h3 class="fw-bold text-red mb-0">45 min</h3><small class="text-secondary">Délai moyen</small></div>
+                        <div class="col-3"><h3 class="fw-bold text-red mb-0">24/7</h3><small class="text-secondary">Support</small></div>
                     </div>
                 </div>
-                <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                    <div class="bg-custom-dark p-4 rounded-4 shadow-lg border border-secondary">
+                <div class="col-lg-5">
+                    <div class="tracking-preview p-4 shadow-lg">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-danger">En direct • Live</span>
-                            <small class="text-muted">GPS Actif</p>
+                            <span class="badge bg-danger"><i class="fa-solid fa-circle-dot me-1"></i> En direct • Live</span>
+                            <small class="text-secondary">GPS Actif</small>
                         </div>
-                        <div class="bg-dark p-3 rounded text-start mb-3">
-                            <p class="mb-1 text-muted small">Trajet en cours :</p>
-                            <p class="fw-bold mb-0 text-white"><i class="fa-solid fa-location-dot text-red me-2"></i> Rond-point Mvou-Mvou ➔ Centre-ville</p>
+                        <div class="bg-black p-3 rounded mb-3 border border-secondary">
+                            <small class="text-secondary d-block">Trajet en cours :</small>
+                            <span class="fw-bold text-white"><i class="fa-solid fa-location-dot text-red me-2"></i>Rond-point Mvou-Mvou ➔ Centre-ville</span>
                         </div>
-                        <div class="alert alert-dark border-secondary text-start mb-0">
-                            <p class="small mb-1 text-muted">Livreur assigné :</p>
-                            <p class="fw-bold mb-0">Marcel K. • <span class="text-success">En route</span></p>
+                        <div class="p-3 bg-dark rounded border border-secondary">
+                            <small class="text-secondary d-block">Livreur assigné :</small>
+                            <span class="fw-bold">Marcel K. • <span class="text-success">En route</span></span>
                         </div>
                     </div>
                 </div>
@@ -112,39 +88,35 @@
         </div>
     </header>
 
-    <!-- Services Section -->
-    <section id="services" class="py-5 bg-custom-dark">
+    <!-- Services -->
+    <section id="services" class="py-5 bg-black">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="text-red fw-bold text-uppercase small">Ce que nous faisons</span>
                 <h2 class="fw-bold">Commandez tout type d'objet via le site</h2>
-                <p class="text-muted">Un site unique pour faire acheter, collecter et livrer : vêtements, courriers, documents... et tout le reste.</p>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card bg-dark text-white border-secondary h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold mb-3"><i class="fa-solid fa-shirt text-red me-2"></i> Vêtements & Accessoires</h5>
-                            <p class="text-muted small">Nous achetons et livrons vos articles de mode, chaussures ou accessoires depuis les marchés et boutiques.</p>
-                            <a href="#commander" class="btn btn-outline-danger btn-sm w-100 mt-2">Commander ce produit</a>
+                <div class="col-md-4"><div class="card card-custom p-4 h-100"><i class="fa-solid fa-shirt text-red fs-1 mb-3"></i><h5 class="fw-bold">Vêtements & Accessoires</h5><p class="text-secondary small">Achat et livraison d'articles de mode depuis les marchés.</p><a href="#commander" class="btn btn-outline-danger btn-sm mt-auto">Commander</a></div></div>
+                <div class="col-md-4"><div class="card card-custom p-4 h-100"><i class="fa-solid fa-utensils text-red fs-1 mb-3"></i><h5 class="fw-bold">Nourriture & Repas</h5><p class="text-secondary small">Vos repas préférés récupérés en restaurant et livrés chauds.</p><a href="#commander" class="btn btn-outline-danger btn-sm mt-auto">Commander</a></div></div>
+                <div class="col-md-4"><div class="card card-custom p-4 h-100"><i class="fa-solid fa-envelope-open-text text-red fs-1 mb-3"></i><h5 class="fw-bold">Documents & Plis</h5><p class="text-secondary small">Transport sécurisé de vos contrats et courriers urgents.</p><a href="#commander" class="btn btn-outline-danger btn-sm mt-auto">Expédier</a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suivi -->
+    <section id="suivi" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5"><span class="text-red fw-bold text-uppercase small">Faisabilité</span><h2 class="fw-bold">Suivez votre colis en temps réel</h2></div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card card-custom p-4">
+                        <div class="input-group">
+                            <input type="text" id="trackingInput" class="form-control" placeholder="Numéro de suivi (ex: KX-892)">
+                            <button class="btn btn-red px-4" onclick="trackPackage()">Rechercher</button>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-dark text-white border-secondary h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold mb-3"><i class="fa-solid fa-utensils text-red me-2"></i> Nourriture & Repas</h5>
-                            <p class="text-muted small">Vos repas préférés commandés dans vos restaurants de prédilection, livrés chauds et rapides.</p>
-                            <a href="#commander" class="btn btn-outline-danger btn-sm w-100 mt-2">Commander un repas</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-dark text-white border-secondary h-100">
-                        <div class="card-body">
-                            <h5 class="fw-bold mb-3"><i class="fa-solid fa-file-lines text-red me-2"></i> Documents & Colis</h5>
-                            <p class="text-muted small">Transport sécurisé et officiel de vos documents administratifs, contrats, et colis confidentiels.</p>
-                            <a href="#commander" class="btn btn-outline-danger btn-sm w-100 mt-2">Expédier un document</a>
+                        <div id="trackingResult" class="d-none alert alert-dark border-secondary mt-3 mb-0">
+                            <h6 class="fw-bold text-red mb-2">Colis : KX-892</h6>
+                            <p class="mb-1 text-white">État : <span class="badge bg-success">En cours de livraison</span></p>
                         </div>
                     </div>
                 </div>
@@ -152,46 +124,20 @@
         </div>
     </section>
 
-    <!-- Section Commande Formulaire -->
-    <section id="commander" class="py-5">
+    <!-- Formulaire de commande -->
+    <section id="commander" class="py-5 bg-black">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="text-red fw-bold text-uppercase small">Passez vos commandes</span>
-                <h2 class="fw-bold">Dites-nous ce qu'il vous faut</h2>
-                <p class="text-muted">Remplissez le formulaire, nous vous rappelons sous 15 minutes avec un devis. Aucun paiement anticipé, vous payez à la livraison.</p>
-            </div>
+            <div class="text-center mb-5"><span class="text-red fw-bold text-uppercase small">Commandes</span><h2 class="fw-bold">Dites-nous ce qu'il vous faut</h2></div>
             <div class="row justify-content-center">
-                <div class="col-lg-8 bg-custom-dark p-4 p-md-5 rounded-4 border border-secondary shadow-lg">
-                    <form>
+                <div class="col-lg-8">
+                    <form id="orderForm" class="card card-custom p-4 p-md-5">
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label small text-muted">Nom complet</label>
-                                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Ex. Anna Traoré">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small text-muted">Téléphone (WhatsApp)</label>
-                                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="+242 06 000 000">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label small text-muted">Que voulez-vous acheter ? (Description du colis)</label>
-                                <textarea class="form-control bg-dark text-white border-secondary" rows="3" placeholder="Ex. 3 robes taille L rouge, boutique 3, près du grand marché..."></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small text-muted">Ville / Quartier</label>
-                                <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="Ex. Pointe-Noire (Mpita)">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small text-muted">Mode d'expédition</label>
-                                <select class="form-select bg-dark text-white border-secondary">
-                                    <option>Moto Express (En ville)</option>
-                                    <option>Affrètement & Camion</option>
-                                    <option>Colis Standard</option>
-                                </select>
-                            </div>
-                            <div class="col-12 text-center mt-4">
-                                <button type="submit" class="btn btn-red btn-lg w-100 py-3 fw-bold">Envoyer ma commande • Sans dépôt</button>
-                                <small class="text-muted d-block mt-2">Réponse garantie sous 15 min · Aucun engagement avant devis validé.</small>
-                            </div>
+                            <div class="col-md-6"><label class="form-label text-secondary small">Nom</label><input type="text" id="clientName" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label text-secondary small">Téléphone WhatsApp</label><input type="tel" id="clientPhone" class="form-control" required></div>
+                            <div class="col-12"><label class="form-label text-secondary small">Description du colis</label><textarea id="itemDetails" class="form-control" rows="3" required></textarea></div>
+                            <div class="col-md-6"><label class="form-label text-secondary small">Ville & Quartier</label><input type="text" id="clientLocation" class="form-control" required></div>
+                            <div class="col-md-6"><label class="form-label text-secondary small">Mode</label><select id="shippingMode" class="form-select"><option>Urbain (Moto Express)</option><option>Routier</option><option>Aérien</option><option>Maritime</option></select></div>
+                            <div class="col-12 mt-4 text-center"><button type="button" onclick="submitOrder()" class="btn btn-red btn-lg w-100 py-3 fw-bold">Envoyer sur WhatsApp</button></div>
                         </div>
                     </form>
                 </div>
@@ -200,20 +146,32 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-4 border-top border-secondary text-center">
+    <footer id="contact" class="py-4 border-top border-secondary bg-black text-center">
         <div class="container">
-            <h5 class="fw-bold mb-3"><span class="text-red">K-EXPRESS</span> LOGISTIQUE</h5>
-            <p class="text-muted small mb-3">Votre quotidien, en sécurité & en livraison express à travers les villes.</p>
-            <div class="d-flex justify-content-center gap-3 mb-3">
-                <a href="#" class="text-white fs-5"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="text-white fs-5"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p class="small text-muted mb-0">&copy; 2026 K-EXPRESS LOGISTIQUE - Tous droits réservés.</p>
+            <h5 class="fw-bold mb-2"><span class="text-red">K-EXPRESS</span> LOGISTIQUE</h5>
+            <p class="text-secondary small mb-2">Contact : contact@k-express.com | +242 06 000 0000</p>
+            <p class="text-secondary small mb-0">&copy; 2026 K-EXPRESS LOGISTIQUE.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function trackPackage() {
+            const input = document.getElementById('trackingInput').value;
+            const result = document.getElementById('trackingResult');
+            if(input.trim() !== "") { result.classList.remove('d-none'); } else { alert("Entrez un code."); }
+        }
+        function submitOrder() {
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const details = document.getElementById('itemDetails').value;
+            const location = document.getElementById('clientLocation').value;
+            const mode = document.getElementById('shippingMode').value;
+            if(!name || !phone || !details || !location) { alert("Remplissez tous les champs."); return; }
+            const msg = `*COMMANDE K-EXPRESS*%0A*Nom:* ${encodeURIComponent(name)}%0A*Tél:* ${encodeURIComponent(phone)}%0A*Colis:* ${encodeURIComponent(details)}%0A*Lieu:* ${encodeURIComponent(location)}%0A*Mode:* ${encodeURIComponent(mode)}`;
+            window.open(`https://wa.me/24206000000?text=${msg}`, '_blank');
+        }
+    </script>
 </body>
-</html>
+        
+</htm>
